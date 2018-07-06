@@ -39,4 +39,9 @@ export class PollsService {
     return this.http.patch<Poll>(url, vote, httpOptions);
   }
 
+  getPoll(id: string): Observable<Poll> {
+    const url = `${this.pollsUrl}/${id}`;
+    return this.http.get<Poll>(url, httpOptions);
+  }
+
 }

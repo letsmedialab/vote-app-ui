@@ -1,6 +1,7 @@
 import { PollsService } from './../polls.service';
 import { Poll } from './../poll';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-poll-list',
@@ -11,7 +12,9 @@ export class PollListComponent implements OnInit, OnChanges {
   @Input() poll: Poll;
   polls: Poll[];
 
-  constructor(private pollsService: PollsService) { }
+  constructor(
+    private router: Router,
+    private pollsService: PollsService) { }
 
   ngOnInit() {
     this.getPolls();
@@ -29,7 +32,7 @@ export class PollListComponent implements OnInit, OnChanges {
   }
 
   viewPoll(poll: Poll) {
-
+    this.router.navigate(['poll-detail', poll._id]);
   }
 
   deletePoll(poll: Poll) {

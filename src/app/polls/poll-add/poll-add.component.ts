@@ -32,6 +32,7 @@ export class PollAddComponent implements OnInit {
     }
     this.pollsService.addPoll(this.poll)
       .subscribe((savedPoll) => {
+        this.pollForm.reset();
         this.pollCreated.emit(savedPoll);
       }, err => {
         alert('please check connection and make sure server is running');
