@@ -1,5 +1,5 @@
 import { Vote } from './vote';
-export interface Poll {
+export class Poll {
   _id: string;
   title: string;
   createdOn: string;

@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-7">
-    <app-poll-add></app-poll-add>
+    <app-poll-add (pollCreated)="onPollCreated($event)"></app-poll-add>
   </div>
   <div class="col-md-7">
-    <app-poll-list></app-poll-list>
+    <app-poll-list [poll]="newPoll"></app-poll-list>
   </div>
 </div>

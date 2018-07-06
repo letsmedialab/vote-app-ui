@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Poll } from './poll';
 
 @Component({
   selector: 'app-polls',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./polls.component.css']
 })
 export class PollsComponent implements OnInit {
+  newPoll: Poll;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPollCreated(newPoll: Poll) {
+    this.newPoll = newPoll;
   }
 
 }

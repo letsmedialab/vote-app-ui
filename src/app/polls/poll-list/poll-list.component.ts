@@ -1,20 +1,26 @@
 import { PollsService } from './../polls.service';
 import { Poll } from './../poll';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-poll-list',
   templateUrl: './poll-list.component.html',
   styleUrls: ['./poll-list.component.css']
 })
-export class PollListComponent implements OnInit {
-
+export class PollListComponent implements OnInit, OnChanges {
+  @Input() poll: Poll;
   polls: Poll[];
 
   constructor(private pollsService: PollsService) { }
 
   ngOnInit() {
     this.getPolls();
+  }
+
+  ngOnChanges() {
+    if (this.polls !== undefined) {
+      this.polls.push(this.poll);
+    }
   }
 
   getPolls(): void {
@@ -27,7 +33,9 @@ export class PollListComponent implements OnInit {
   }
 
   deletePoll(poll: Poll) {
-    this.pollsService.deletePoll(poll._id).subscribe();
+    this.pollsService.deletePoll(poll._id).subscribe(() => {
+      this.polls = this.polls.filter(h => h !== poll);
+    });
   }
 
 }
