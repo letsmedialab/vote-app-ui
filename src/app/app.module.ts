@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { PollsComponent } from './polls/polls.component';
 import { PollListComponent } from './polls/poll-list/poll-list.component';
@@ -16,7 +18,8 @@ import { PollDetailComponent } from './polls/poll-detail/poll-detail.component';
     PollDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

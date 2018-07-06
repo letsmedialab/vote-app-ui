@@ -1,3 +1,27 @@
-<p>
-  poll-list works!
-</p>
+<h3>Polls</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let poll of polls">
+        <td class="col-md-6">{{poll.title}}</td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm" (click)="viewPoll(poll)">
+            view
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deletePoll(poll)">
+            delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
