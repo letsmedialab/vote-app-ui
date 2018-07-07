@@ -1,15 +1,21 @@
+import { PollsService } from './polls/polls.service';
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PollsComponent } from './polls/polls.component';
 import { PollListComponent } from './polls/poll-list/poll-list.component';
 import { PollAddComponent } from './polls/poll-add/poll-add.component';
 import { PollDetailComponent } from './polls/poll-detail/poll-detail.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +23,19 @@ import { PollDetailComponent } from './polls/poll-detail/poll-detail.component';
     PollsComponent,
     PollListComponent,
     PollAddComponent,
-    PollDetailComponent
+    PollDetailComponent,
+    SigninComponent,
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PollsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
