@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -19,9 +22,9 @@ export class SignupComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signupUser(name, email, password)
-      .subscribe((res) => {
-        console.log(res.token);
-        console.log(res.auth);
+      .subscribe((response) => {
+        this.authService.setToken(response.token);
+        this.router.navigate(['/polls']);
       }, err => {
         alert('failed to register');
       }

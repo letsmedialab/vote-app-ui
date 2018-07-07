@@ -26,6 +26,10 @@ export class AuthService {
     // return true;
   }
 
+  setToken(token: string) {
+    this.token = token;
+  }
+
   signupUser(name: string, email: string, password: string): Observable<any> {
     const url = `${this.authUrl}/register`;
     const creds = `name=${name}&email=${email}&password=${password}`;

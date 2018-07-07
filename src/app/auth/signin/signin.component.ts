@@ -1,6 +1,7 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,9 +21,9 @@ export class SigninComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signinUser(email, password)
-      .subscribe((res) => {
-        console.log(res.auth);
-        console.log(res.token);
+      .subscribe((response) => {
+        this.authService.setToken(response.token);
+        this.router.navigate(['/polls']);
       }, err => {
         alert('failed to login');
       }
