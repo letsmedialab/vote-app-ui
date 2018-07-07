@@ -1,6 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,19 +16,26 @@ export class AuthService {
   authUrl = 'http://localhost:8000/api/auth';
   token: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private _cookieService: CookieService,
+    private http: HttpClient) { }
 
   logout() {
     this.token = null;
+    this._cookieService.removeAll();
   }
 
   isAuthenticated() {
-     return this.token != null;
-    // return true;
+      return this._cookieService.get('token') != null;
   }
 
   setToken(token: string) {
     this.token = token;
+    this._cookieService.put('token', token);
+  }
+
+  getToken() {
+    return this._cookieService.get('token');
   }
 
   signupUser(name: string, email: string, password: string): Observable<any> {

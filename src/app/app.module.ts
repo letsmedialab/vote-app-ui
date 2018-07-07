@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { CookieModule } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 import { PollsComponent } from './polls/polls.component';
@@ -30,10 +32,12 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CookieModule.forRoot()
   ],
   providers: [PollsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

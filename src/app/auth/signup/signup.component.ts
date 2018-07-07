@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
         this.authService.setToken(response.token);
         this.router.navigate(['/polls']);
       }, err => {
-        alert('failed to register');
+        alert('failed to register!');
       }
     );
   }

@@ -17,7 +17,7 @@ export class PollsService {
   constructor(
     private http: HttpClient,
     private authService: AuthService) {
-      this.headers = new HttpHeaders({'Authorization': this.authService.token});
+      this.headers = new HttpHeaders({'Authorization': this.authService.getToken()});
       this.headers.append({'Content-Type':  'application/json'});
     }
 
