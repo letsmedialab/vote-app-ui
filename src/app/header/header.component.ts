@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isAuthenticated: boolean;
 
   constructor(
     private router: Router,
     private authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  checkAuthentication() {
+    return this.isAuthenticated = this.authService.isAuthenticated();
   }
 
   onLogout() {
