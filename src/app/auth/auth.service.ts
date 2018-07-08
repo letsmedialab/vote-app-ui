@@ -13,7 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  authUrl = 'http://localhost:8000/api/auth';
+  authUrl = 'https://poll-vote-app.herokuapp.com/api/auth';
+  // authUrl = 'http://localhost:3000/api/auth';
   token: string;
 
   constructor(

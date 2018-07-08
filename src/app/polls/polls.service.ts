@@ -12,7 +12,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class PollsService {
   private headers;
-  pollsUrl = 'http://localhost:8000/api/polls';
+  pollsUrl = 'https://poll-vote-app.herokuapp.com/api/polls';
+  // pollsUrl = 'http://localhost:3000/api/polls';
 
   constructor(
     private http: HttpClient,
