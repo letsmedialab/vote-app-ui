@@ -19,6 +19,7 @@ export class PollDetailComponent implements OnInit, OnDestroy {
   public pieChartLabels: string[];
   public pieChartData: number[];
   public pieChartType = 'pie';
+  public twitterShareText: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,6 +59,7 @@ export class PollDetailComponent implements OnInit, OnDestroy {
       }).length);
     }
     this.pieChartData = this.pieChartData.splice(this.pieChartLabels.length);
+    this.twitterShareText = `Polling Begins!\nVote for: ${this.poll.title}`;
   }
 
   castVote() {
@@ -69,7 +71,7 @@ export class PollDetailComponent implements OnInit, OnDestroy {
         this.poll = pollResult;
         this.updateChart();
       }, err => {
-          alert('please check connection and make sure server is running');
+          alert('voting failed!');
         }
       );
   }

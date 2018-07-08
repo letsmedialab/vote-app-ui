@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { CookieModule } from 'ngx-cookie';
+import { ShareButtonModule } from '@ngx-share/button';
 
 import { AppComponent } from './app.component';
 import { PollsComponent } from './polls/polls.component';
@@ -37,7 +38,8 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    ShareButtonModule.forRoot()
   ],
   providers: [PollsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
