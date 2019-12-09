@@ -4,12 +4,12 @@ import { AuthService } from './auth/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { ShareButtonModule } from '@ngx-share/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
-import { CookieModule } from 'ngx-cookie';
-import { ShareButtonModule } from '@ngx-share/button';
 
 import { AppComponent } from './app.component';
 import { PollsComponent } from './polls/polls.component';
@@ -38,10 +38,9 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    CookieModule.forRoot(),
-    ShareButtonModule.forRoot()
+    ShareButtonModule
   ],
-  providers: [PollsService, AuthService, AuthGuard],
+  providers: [PollsService, AuthService, AuthGuard, CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

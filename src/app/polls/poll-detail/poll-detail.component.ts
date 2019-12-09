@@ -4,7 +4,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Poll } from '../poll';
 import { Vote } from '../vote';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-poll-detail',

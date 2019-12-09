@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,8 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  authUrl = 'https://poll-vote-app.herokuapp.com/api/auth';
-  // authUrl = 'http://localhost:3000/api/auth';
+  // authUrl = 'https://poll-vote-app.herokuapp.com/api/auth';
+  authUrl = 'http://localhost:3000/api/auth';
   token: string;
 
   constructor(
@@ -23,16 +23,16 @@ export class AuthService {
 
   logout() {
     this.token = null;
-    this._cookieService.removeAll();
+    this._cookieService.delete('token');
   }
 
   isAuthenticated() {
-      return this._cookieService.get('token') != null;
+    return this._cookieService.get('token') !== '';
   }
 
   setToken(token: string) {
     this.token = token;
-    this._cookieService.put('token', token);
+    this._cookieService.set('token', token);
   }
 
   getToken() {
